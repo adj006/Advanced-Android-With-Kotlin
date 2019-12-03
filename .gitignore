@@ -1,6 +1,4 @@
 .DS_Store
-.idea/
-*.iml
 local.properties
 app/build/
 .gradle/
