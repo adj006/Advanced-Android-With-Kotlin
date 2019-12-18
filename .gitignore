@@ -5,7 +5,6 @@ app/build/
 .gradle/
 *.iml
 gradle/
-build.gradle
 settings.gradle
 gradlew.bat
 gradlew
