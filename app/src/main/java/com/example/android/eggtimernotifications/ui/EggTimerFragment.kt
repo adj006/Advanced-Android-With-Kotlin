@@ -56,19 +56,24 @@ class EggTimerFragment : Fragment() {
             getString(R.string.egg_notification_channel_name)
         )
 
+        // TODO: Step 3.1 create a new channel for FCM
+
+        // TODO: Step 3.4 call subscribe topics on start
+
         return binding.root
     }
 
     private fun createChannel(channelId: String, channelName: String) {
         // TODO: Step 1.6 START create a channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        	// Create channel to show notifications.
             val notificationChannel = NotificationChannel(
                 channelId,
                 channelName,
                 // TODO: Step 2.4 change importance
                 NotificationManager.IMPORTANCE_HIGH
             )
-            // TODO: Step 2.6 disable badges for this channel
+			    // TODO: Step 2.6 disable badges for this channel
                 .apply {
                     setShowBadge(false)
                 }
@@ -76,17 +81,18 @@ class EggTimerFragment : Fragment() {
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
-            notificationChannel.description = "Time for breakfast"
+            notificationChannel.description = getString(R.string.breakfast_notification_channel_description)
 
             val notificationManager = requireActivity().getSystemService(
                 NotificationManager::class.java
             )
             notificationManager.createNotificationChannel(notificationChannel)
+
         }
-
-        // TODO: Step 1.6 END create a channel
-
+        // TODO: Step 1.6 END create channel
     }
+
+    // TODO: Step 3.3 subscribe to breakfast topic
 
     companion object {
         fun newInstance() = EggTimerFragment()
